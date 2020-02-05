@@ -1065,7 +1065,11 @@ ngx_delete_pidfile(ngx_cycle_t *cycle)
     }
 }
 
-
+/*
+    该函数处理 nginx -s 命令
+    1 打开工作进程，读取pid
+    2 调用ngx_os_signal_process处理
+*/
 ngx_int_t
 ngx_signal_process(ngx_cycle_t *cycle, char *sig)
 {

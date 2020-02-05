@@ -10,12 +10,12 @@
 #include <ngx_event.h>
 #include <ngx_channel.h>
 
-
+// 信号结构体
 typedef struct {
-    int     signo;
-    char   *signame;
-    char   *name;
-    void  (*handler)(int signo, siginfo_t *siginfo, void *ucontext);
+    int     signo;      //信号编号
+    char   *signame;    //信号表现形式，如“SIGIO”
+    char   *name;       //信号名称，如“stop,reload”
+    void  (*handler)(int signo, siginfo_t *siginfo, void *ucontext); //信号处理函数
 } ngx_signal_t;
 
 
@@ -35,7 +35,7 @@ ngx_socket_t     ngx_channel;
 ngx_int_t        ngx_last_process;
 ngx_process_t    ngx_processes[NGX_MAX_PROCESSES];
 
-
+// 定义所有的信号（编号，表现形式，名称，处理函数）
 ngx_signal_t  signals[] = {
     { ngx_signal_value(NGX_RECONFIGURE_SIGNAL),
       "SIG" ngx_value(NGX_RECONFIGURE_SIGNAL),
@@ -627,7 +627,10 @@ ngx_debug_point(void)
     }
 }
 
-
+/*
+    遍历signals数组，根据给定信号name，找到对应signo
+    调用kill命令，向该pid发送signo号信号
+*/
 ngx_int_t
 ngx_os_signal_process(ngx_cycle_t *cycle, char *name, ngx_pid_t pid)
 {

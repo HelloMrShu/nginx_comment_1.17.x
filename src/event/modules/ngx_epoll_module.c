@@ -47,7 +47,7 @@ struct epoll_event {
     epoll_data_t  data;
 };
 
-
+// 实现epoll事件模型的三个函数
 int epoll_create(int size);
 
 int epoll_create(int size)

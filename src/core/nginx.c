@@ -208,7 +208,7 @@ main(int argc, char *const *argv)
         return 1;
     }
 
-    // 获取命令行参数，比如-v -V，根据不同的参数，初始化对应的变量，如下所示
+    // 获取命令行参数，比如-v -V，根据不同的参数，初始化对应的变量
     /*
         case 'h':
             ngx_show_version = 1;
@@ -388,6 +388,7 @@ main(int argc, char *const *argv)
     }
     
     // ngx_signal 在 ngx_get_option() 中设置, -s 参数，向nginx主进程发送对应的信号，如stop, quit, reopen, reload
+    // ngx_signal 存储的是信号名称
     if (ngx_signal) {
         return ngx_signal_process(cycle, ngx_signal);
     }
@@ -808,7 +809,7 @@ ngx_exec_new_binary(ngx_cycle_t *cycle, char *const *argv)
     return pid;
 }
 
-
+// 解析命令行参数，并设置相关变量值
 static ngx_int_t
 ngx_get_options(int argc, char *const *argv)
 {
@@ -898,6 +899,7 @@ ngx_get_options(int argc, char *const *argv)
                 ngx_log_stderr(0, "option \"-g\" requires parameter");
                 return NGX_ERROR;
 
+            // nginx -s reload等相关命令解析，
             case 's':
                 if (*p) {
                     ngx_signal = (char *) p;
