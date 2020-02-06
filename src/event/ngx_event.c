@@ -181,7 +181,7 @@ ngx_module_t  ngx_event_core_module = {
     NGX_EVENT_MODULE,                      /* module type */
     NULL,                                  /* init master */
     ngx_event_module_init,                 /* init module */
-    ngx_event_process_init,                /* init process */
+    ngx_event_process_init,                /* init process ，当调用init_process时，调用的是ngx_event_process_init() */
     NULL,                                  /* init thread */
     NULL,                                  /* exit thread */
     NULL,                                  /* exit process */
@@ -190,8 +190,9 @@ ngx_module_t  ngx_event_core_module = {
 };
 
 /*
- * worker 进程主事件循环 （point）
+ * worker 进程主事件循环核心处理函数
  * worker 进程事件接收的所有工作都在该函数中完成
+ * 网络事件，定时器事件
  */
 void
 ngx_process_events_and_timers(ngx_cycle_t *cycle)
@@ -220,7 +221,7 @@ ngx_process_events_and_timers(ngx_cycle_t *cycle)
 #endif
     }
     
-    /* accept 锁，当进程中空闲连接数小于该进程最大连接数的1/8时， 减小获得accept锁的概率 */
+    // accept锁，当进程中空闲连接数小于该进程最大连接数的1/8时，减小获得accept锁的概率
     if (ngx_use_accept_mutex) {
         if (ngx_accept_disabled > 0) {
             ngx_accept_disabled--;
@@ -255,8 +256,8 @@ ngx_process_events_and_timers(ngx_cycle_t *cycle)
     delta = ngx_current_msec;
 
     /*
-     * 调用对应事件模块的 events_actions.process_events 函数，如 ngx_epoll_module 事件模块会调用 ngx_epoll_process_events 函数
-     * 如果获取到 accept 锁则将 accept 锁事件加入队列，否则直接处理事件
+     * 调用对应事件模块的 events_actions.process_events 函数，如 ngx_epoll_module 事件模块会调用 ngx_epoll_process_events()
+     * 如果获取到 accept 锁，则将 accept 锁事件加入队列，否则直接处理事件
     */
     (void) ngx_process_events(cycle, timer, flags);
 
@@ -519,6 +520,7 @@ ngx_event_module_init(ngx_cycle_t *cycle)
                       "getrlimit(RLIMIT_NOFILE) failed, ignored");
 
     } else {
+        // 判断打开最大文件数
         if (ecf->connections > (ngx_uint_t) rlmt.rlim_cur
             && (ccf->rlimit_nofile == NGX_CONF_UNSET
                 || ecf->connections > (ngx_uint_t) ccf->rlimit_nofile))
@@ -629,7 +631,11 @@ ngx_timer_signal_handler(int signo)
 
 #endif
 
-
+/*
+ * 每个模块(module)都有一个全局的ngx_module_t结构变量，在 worker process被创建(fork)以后，
+ * 在ngx_worker_process_init()内调用到每个模块的init_process钩子。
+ * 其中 ngx_event_core_module的init_process钩子指向的是ngx_event_process_init()函数
+ */
 static ngx_int_t
 ngx_event_process_init(ngx_cycle_t *cycle)
 {
@@ -681,8 +687,14 @@ ngx_event_process_init(ngx_cycle_t *cycle)
             continue;
         }
 
+        // 获取上下文
         module = cycle->modules[m]->ctx;
 
+        /*
+         * 执行初始化
+         * ngx_epoll_module(类型ngx_module_t)是全局的结构变量，在初始化时由ngx_epoll_module_ctx传入参数，而init函数也在这时确定
+         * 如epoll 即 ngx_epoll_init()函数
+         */
         if (module->actions.init(cycle, ngx_timer_resolution) != NGX_OK) {
             /* fatal */
             exit(2);
@@ -747,6 +759,7 @@ ngx_event_process_init(ngx_cycle_t *cycle)
 
 #endif
 
+    // 初始化connections
     cycle->connections =
         ngx_alloc(sizeof(ngx_connection_t) * cycle->connection_n, cycle->log);
     if (cycle->connections == NULL) {
@@ -755,6 +768,7 @@ ngx_event_process_init(ngx_cycle_t *cycle)
 
     c = cycle->connections;
 
+    // 分配connection_n个空间给read_events和write_events，并初始化read_events和write_events
     cycle->read_events = ngx_alloc(sizeof(ngx_event_t) * cycle->connection_n,
                                    cycle->log);
     if (cycle->read_events == NULL) {
@@ -781,6 +795,7 @@ ngx_event_process_init(ngx_cycle_t *cycle)
     i = cycle->connection_n;
     next = NULL;
 
+    // 把connection链接起来
     do {
         i--;
 
@@ -796,7 +811,6 @@ ngx_event_process_init(ngx_cycle_t *cycle)
     cycle->free_connection_n = cycle->connection_n;
 
     /* for each listening socket */
-
     ls = cycle->listening.elts;
     for (i = 0; i < cycle->listening.nelts; i++) {
 
@@ -806,6 +820,7 @@ ngx_event_process_init(ngx_cycle_t *cycle)
         }
 #endif
 
+        //获取一个空闲的connection，并设置其fd
         c = ngx_get_connection(ls[i].fd, cycle->log);
 
         if (c == NULL) {
@@ -815,12 +830,15 @@ ngx_event_process_init(ngx_cycle_t *cycle)
         c->type = ls[i].type;
         c->log = &ls[i].log;
 
+        //获取ngx_listening_s结构
         c->listening = &ls[i];
+        //设置ngx_listening_s.connection
         ls[i].connection = c;
 
         rev = c->read;
 
         rev->log = c->log;
+        //接受请求
         rev->accept = 1;
 
 #if (NGX_HAVE_DEFERRED_ACCEPT)
@@ -872,6 +890,7 @@ ngx_event_process_init(ngx_cycle_t *cycle)
             }
 
         } else {
+            //handler为ngx_event_accept
             rev->handler = ngx_event_accept;
 
             if (ngx_use_accept_mutex) {
@@ -884,7 +903,7 @@ ngx_event_process_init(ngx_cycle_t *cycle)
         }
 
 #else
-
+        //设置c->read的handler为 ngx_event_accept
         rev->handler = (c->type == SOCK_STREAM) ? ngx_event_accept
                                                 : ngx_event_recvmsg;
 

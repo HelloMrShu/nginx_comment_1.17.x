@@ -409,7 +409,7 @@ ngx_start_worker_processes(ngx_cycle_t *cycle, ngx_int_t n, ngx_int_t type)
     // 由master进程按照配置文件中worker进程的数目，启动这些子进程
     for (i = 0; i < n; i++) {
 
-        // 调用该方法，fork子进程
+        // 调用该方法，fork子进程，并执行回调ngx_worker_process_cycle()
         ngx_spawn_process(cycle, ngx_worker_process_cycle,
                           (void *) (intptr_t) i, "worker process", type);
 
@@ -792,6 +792,7 @@ ngx_worker_process_cycle(ngx_cycle_t *cycle, void *data)
     // worker 进程初始化
     ngx_worker_process_init(cycle, worker);
 
+    // 设置worker进程title
     ngx_setproctitle("worker process");
 
     // work 主循环
@@ -998,7 +999,10 @@ ngx_worker_process_init(ngx_cycle_t *cycle, ngx_int_t worker)
     //调用ngx_module_t结构的回调init_process
     for (i = 0; cycle->modules[i]; i++) {
         if (cycle->modules[i]->init_process) {
-            //ngx_event_process_init 
+            /*
+             * 调用到每个模块的init_process钩子，ngx_event_core_module的init_process钩子指向的是ngx_event_process_init()函数
+             * 见ngx_event.c 183行
+             */
             if (cycle->modules[i]->init_process(cycle) == NGX_ERROR) {
                 /* fatal */
                 exit(2);

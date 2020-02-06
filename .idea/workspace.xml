@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ad8e28f-6550-4dd5-8a6b-fc519dbcbcfe" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/core/nginx.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/nginx.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/ngx_cycle.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/ngx_cycle.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/event/modules/ngx_epoll_module.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/modules/ngx_epoll_module.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/os/unix/ngx_process.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/os/unix/ngx_process.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event/ngx_event.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/ngx_event.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/os/unix/ngx_process_cycle.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/os/unix/ngx_process_cycle.c" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,39 +14,39 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/event/modules/ngx_epoll_module.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2842">
-              <caret line="797" column="35" lean-forward="true" selection-start-line="797" selection-start-column="35" selection-end-line="797" selection-end-column="35" />
+            <state relative-caret-position="1030">
+              <caret line="959" column="26" lean-forward="true" selection-start-line="959" selection-start-column="26" selection-end-line="959" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/nginx.c">
+        <entry file="file://$PROJECT_DIR$/src/os/unix/ngx_process_cycle.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-114">
-              <caret line="390" column="26" selection-start-line="390" selection-start-column="26" selection-end-line="390" selection-end-column="26" />
+            <state relative-caret-position="-840">
+              <caret line="1002" column="102" lean-forward="true" selection-start-line="1002" selection-start-column="78" selection-end-line="1002" selection-end-column="102" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/ngx_cycle.c">
+        <entry file="file://$PROJECT_DIR$/src/event/ngx_event.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="1070" column="31" selection-start-line="1070" selection-start-column="31" selection-end-line="1070" selection-end-column="31" />
+            <state relative-caret-position="260">
+              <caret line="695" column="34" selection-start-line="695" selection-start-column="20" selection-end-line="695" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/os/unix/ngx_process.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" selection-start-line="12" selection-end-line="18" selection-end-column="15" />
+            <state relative-caret-position="-10401">
+              <caret line="86" selection-start-line="86" selection-end-line="86" />
             </state>
           </provider>
         </entry>
@@ -62,9 +62,23 @@
       <find>ngx_get_conf</find>
       <find>ngx_get_option</find>
       <find>ngx_signal_value</find>
-      <find>ngx_epoll_process_events</find>
-      <find>ngx_signal_process</find>
       <find>ngx_os_signal_process</find>
+      <find>ngx_signal_process</find>
+      <find>ngx_process_e</find>
+      <find>ngx_process_events</find>
+      <find>ngx_events_commands</find>
+      <find>ngx_process_events_and_timers</find>
+      <find>ngx_start_worker_</find>
+      <find>ngx_spawn_process</find>
+      <find>ngx_worker_process_cycle</find>
+      <find>ngx_event_core_module</find>
+      <find>ngx_event_module_init</find>
+      <find>ngx_worker_process_init</find>
+      <find>NGX_HAVE_DEFERRED_ACCEPT</find>
+      <find>ngx_event_process_init</find>
+      <find>ngx_epoll_module_ctx.actions</find>
+      <find>ngx_epoll_init</find>
+      <find>ngx_epoll_process_events</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -79,10 +93,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/event/modules/ngx_epoll_module.c" />
         <option value="$PROJECT_DIR$/src/core/nginx.c" />
         <option value="$PROJECT_DIR$/src/core/ngx_cycle.c" />
         <option value="$PROJECT_DIR$/src/os/unix/ngx_process.c" />
+        <option value="$PROJECT_DIR$/src/os/unix/ngx_process_cycle.c" />
+        <option value="$PROJECT_DIR$/src/event/ngx_event.c" />
+        <option value="$PROJECT_DIR$/src/event/modules/ngx_epoll_module.c" />
       </list>
     </option>
   </component>
@@ -111,12 +127,6 @@
               <item name="nginx_comment_1.17.x" type="b2602c69:ProjectViewProjectNode" />
               <item name="nginx_comment_1.17.x" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nginx_comment_1.17.x" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nginx_comment_1.17.x" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="nginx_comment_1.17.x" type="b2602c69:ProjectViewProjectNode" />
@@ -166,25 +176,21 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1580904389852</updated>
-      <workItem from="1580904391134" duration="7101000" />
+      <workItem from="1580904391134" duration="9129000" />
+      <workItem from="1580973503324" duration="8976000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7101000" />
+    <option name="totallyTimeSpent" value="18105000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21045576" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21313673" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -192,10 +198,15 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,20 +223,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/event/modules/ngx_epoll_module.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2842">
-          <caret line="797" column="35" lean-forward="true" selection-start-line="797" selection-start-column="35" selection-end-line="797" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/nginx.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-114">
-          <caret line="390" column="26" selection-start-line="390" selection-start-column="26" selection-end-line="390" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/ngx_cycle.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -233,10 +230,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/nginx.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2424">
+          <caret line="390" column="26" selection-start-line="390" selection-start-column="26" selection-end-line="390" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/os/unix/ngx_process.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" selection-start-line="12" selection-end-line="18" selection-end-column="15" />
+        <state relative-caret-position="-10401">
+          <caret line="86" selection-start-line="86" selection-end-line="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/os/unix/ngx_process_cycle.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-840">
+          <caret line="1002" column="102" lean-forward="true" selection-start-line="1002" selection-start-column="78" selection-end-line="1002" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/event/ngx_event.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="695" column="34" selection-start-line="695" selection-start-column="20" selection-end-line="695" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/event/modules/ngx_epoll_module.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1030">
+          <caret line="959" column="26" lean-forward="true" selection-start-line="959" selection-start-column="26" selection-end-line="959" selection-end-column="26" />
         </state>
       </provider>
     </entry>

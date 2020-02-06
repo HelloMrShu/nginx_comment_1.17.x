@@ -194,7 +194,7 @@ static ngx_event_module_t  ngx_epoll_module_ctx = {
         NULL,                            /* trigger a notify */
 #endif
         ngx_epoll_process_events,        /* process the events */
-        ngx_epoll_init,                  /* init the events */
+        ngx_epoll_init,                  /* init the events，module->actions.init调用 */
         ngx_epoll_done,                  /* done the events */
     }
 };
@@ -318,7 +318,7 @@ failed:
 
 #endif
 
-
+// 在ngx_event_process_init函数中调用
 static ngx_int_t
 ngx_epoll_init(ngx_cycle_t *cycle, ngx_msec_t timer)
 {
@@ -368,6 +368,7 @@ ngx_epoll_init(ngx_cycle_t *cycle, ngx_msec_t timer)
 
     ngx_io = ngx_os_io;
 
+    //指定处理函数为ngx_epoll_process_events()
     ngx_event_actions = ngx_epoll_module_ctx.actions;
 
 #if (NGX_HAVE_CLEAR_EVENT)
@@ -786,9 +787,8 @@ ngx_epoll_notify(ngx_event_handler_pt handler)
 #endif
 
 /*
-    use epoll 事件驱动模型
-    ngx_epoll_process_events注册到ngx_process_events和ngx_epoll_add_event配合使用
-    该函数在ngx_process_events_and_timers中调用
+ * nginx.conf events模块配置 use epoll
+ * ngx_process_events实际调用的是ngx_epoll_process_events
 */
 static ngx_int_t
 ngx_epoll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags)
@@ -807,8 +807,10 @@ ngx_epoll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags)
     ngx_log_debug1(NGX_LOG_DEBUG_EVENT, cycle->log, 0,
                    "epoll timer: %M", timer);
 
-    // 从rdlist就绪队列收集事件
-    // EPOLL_WAIT如果没有读写事件或者定时器超时事件发生，则会进入睡眠，这个过程会让出CPU
+    /*
+     * 从rdlist就绪队列收集事件，存储到event_list中
+     * EPOLL_WAIT如果没有读写事件或者定时器超时事件发生，则会进入睡眠，这个过程会让出CPU
+     */
     events = epoll_wait(ep, event_list, (int) nevents, timer);
 
     err = (events == -1) ? ngx_errno : 0;
@@ -847,7 +849,7 @@ ngx_epoll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags)
         return NGX_ERROR;
     }
 
-    // 遍历所有收集的就绪事件
+    // 遍历所有就绪事件
     for (i = 0; i < events; i++) {
         // 取得该事件ngx_connection_t连接的地址
         c = event_list[i].data.ptr;
@@ -908,23 +910,27 @@ ngx_epoll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags)
             }
 #endif
 
-            //表示已经有数据到了，这里只是把accept成功前的 ngx_connection_t->read->ready置1，accept返回后会重新从连接池中获取一个ngx_connection_t
+            //表示有数据到达，这里只是把accept成功前的 ngx_connection_t->read->ready置1，accept返回后会重新从连接池中获取一个ngx_connection_t
             rev->ready = 1;
             rev->available = -1;
 
+            //如果设置了NGX_POST_EVENTS，说明该事件要延后处理
             if (flags & NGX_POST_EVENTS) {
                 // 如果要在post队列中延后处理该事件，首先要判断它是新连接事件还是普通事件，以决定把它加入
                 // 到ngx_posted_accept_events队列或者ngx_postedL events队列中
                 queue = rev->accept ? &ngx_posted_accept_events
                                     : &ngx_posted_events;
 
+                //将这个事件添加到post队列中延后处理
                 ngx_post_event(rev, queue);
 
             } else {
+                //立即调用回调函数
                 rev->handler(rev);
             }
         }
 
+        // 取出写事件
         wev = c->write;
 
         if ((revents & EPOLLOUT) && wev->active) {
@@ -951,7 +957,7 @@ ngx_epoll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags)
                 ngx_post_event(wev, &ngx_posted_events);
 
             } else {
-                // 立即调用回调函数处理该事件
+                //立即调用回调函数
                 wev->handler(wev);
             }
         }
