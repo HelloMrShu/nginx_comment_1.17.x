@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ad8e28f-6550-4dd5-8a6b-fc519dbcbcfe" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/event/modules/ngx_epoll_module.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/modules/ngx_epoll_module.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/event/ngx_event.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/ngx_event.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/os/unix/ngx_process_cycle.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/os/unix/ngx_process_cycle.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event/ngx_event_accept.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/ngx_event_accept.c" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,11 +13,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/event/modules/ngx_epoll_module.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1030">
-              <caret line="959" column="26" lean-forward="true" selection-start-line="959" selection-start-column="26" selection-end-line="959" selection-end-column="26" />
+            <state relative-caret-position="260">
+              <caret line="786" column="6" lean-forward="true" selection-start-line="786" selection-start-column="6" selection-end-line="786" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/event/ngx_event_acceptex.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2645">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/event/ngx_event_accept.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="379">
+              <caret line="315" column="86" selection-start-line="315" selection-start-column="86" selection-end-line="315" selection-end-column="86" />
             </state>
           </provider>
         </entry>
@@ -75,10 +91,11 @@
       <find>ngx_event_module_init</find>
       <find>ngx_worker_process_init</find>
       <find>NGX_HAVE_DEFERRED_ACCEPT</find>
-      <find>ngx_event_process_init</find>
       <find>ngx_epoll_module_ctx.actions</find>
+      <find>ngx_event_process_init</find>
       <find>ngx_epoll_init</find>
       <find>ngx_epoll_process_events</find>
+      <find>ngx_event_accept</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -99,6 +116,7 @@
         <option value="$PROJECT_DIR$/src/os/unix/ngx_process_cycle.c" />
         <option value="$PROJECT_DIR$/src/event/ngx_event.c" />
         <option value="$PROJECT_DIR$/src/event/modules/ngx_epoll_module.c" />
+        <option value="$PROJECT_DIR$/src/event/ngx_event_accept.c" />
       </list>
     </option>
   </component>
@@ -177,12 +195,12 @@
       <option name="presentableId" value="Default" />
       <updated>1580904389852</updated>
       <workItem from="1580904391134" duration="9129000" />
-      <workItem from="1580973503324" duration="8976000" />
+      <workItem from="1580973503324" duration="10702000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18105000" />
+    <option name="totallyTimeSpent" value="19831000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -260,8 +278,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/event/modules/ngx_epoll_module.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1030">
-          <caret line="959" column="26" lean-forward="true" selection-start-line="959" selection-start-column="26" selection-end-line="959" selection-end-column="26" />
+        <state relative-caret-position="260">
+          <caret line="786" column="6" lean-forward="true" selection-start-line="786" selection-start-column="6" selection-end-line="786" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/event/ngx_event_acceptex.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2645">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/event/ngx_event_accept.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="315" column="86" selection-start-line="315" selection-start-column="86" selection-end-line="315" selection-end-column="86" />
         </state>
       </provider>
     </entry>

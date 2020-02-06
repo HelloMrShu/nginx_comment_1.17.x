@@ -787,6 +787,7 @@ ngx_epoll_notify(ngx_event_handler_pt handler)
 #endif
 
 /*
+ * ngx_epoll_process_events是实现了收集、分发事件的process_events接口的方法
  * nginx.conf events模块配置 use epoll
  * ngx_process_events实际调用的是ngx_epoll_process_events
 */

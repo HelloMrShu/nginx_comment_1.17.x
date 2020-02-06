@@ -202,6 +202,7 @@ ngx_event_accept(ngx_event_t *ev)
 
         *log = ls->log;
 
+        //接收，发送网络字节流的回调函数
         c->recv = ngx_recv;
         c->send = ngx_send;
         c->recv_chain = ngx_recv_chain;
@@ -305,13 +306,14 @@ ngx_event_accept(ngx_event_t *ev)
         log->data = NULL;
         log->handler = NULL;
 
+        //ls->handler = ngx_http_init_connection
         ls->handler(c);
 
         if (ngx_event_flags & NGX_USE_KQUEUE_EVENT) {
             ev->available--;
         }
 
-    } while (ev->available);
+    } while (ev->available); // available为1表示一次尽可能多地接收新连接，循环调用accept()直到取完accept队列中的连接
 }
 
 
