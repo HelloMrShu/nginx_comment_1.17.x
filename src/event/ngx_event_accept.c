@@ -133,9 +133,12 @@ ngx_event_accept(ngx_event_t *ev)
         (void) ngx_atomic_fetch_add(ngx_stat_accepted, 1);
 #endif
 
+        //设置负载均衡阀值 最开始free_connection_n=connection_n，见ngx_event_process_init
+        //判断可用连接的数目和总数目的八分之一大小，如果可用的小于1/8，为正
         ngx_accept_disabled = ngx_cycle->connection_n / 8
                               - ngx_cycle->free_connection_n;
 
+        //从连接池中获取一个空闲ngx_connection_t，将accept得到的已连接套接字s保存到一个连接结构c中
         c = ngx_get_connection(s, ev->log);
 
         if (c == NULL) {
@@ -306,14 +309,16 @@ ngx_event_accept(ngx_event_t *ev)
         log->data = NULL;
         log->handler = NULL;
 
-        //ls->handler = ngx_http_init_connection
+        /*
+         * 如果是http模块，则调用ngx_http_init_connection
+         */
         ls->handler(c);
 
         if (ngx_event_flags & NGX_USE_KQUEUE_EVENT) {
             ev->available--;
         }
 
-    } while (ev->available); // available为1表示一次尽可能多地接收新连接，循环调用accept()直到取完accept队列中的连接
+    } while (ev->available); //available为1表示一次尽可能多地接收新连接，循环调用accept()直到取完accept队列中的连接
 }
 
 

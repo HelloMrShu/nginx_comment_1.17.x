@@ -16,17 +16,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/event/modules/ngx_epoll_module.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="786" column="6" lean-forward="true" selection-start-line="786" selection-start-column="6" selection-end-line="786" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/event/ngx_event_acceptex.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2645">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="-2380">
+              <caret line="324" column="3" selection-start-line="324" selection-start-column="3" selection-end-line="324" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -34,8 +25,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/event/ngx_event_accept.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="315" column="86" selection-start-line="315" selection-start-column="86" selection-end-line="315" selection-end-column="86" />
+            <state relative-caret-position="401">
+              <caret line="316" column="29" lean-forward="true" selection-start-line="316" selection-start-column="29" selection-end-line="316" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -52,7 +43,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/event/ngx_event.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
+            <state relative-caret-position="1580">
               <caret line="695" column="34" selection-start-line="695" selection-start-column="20" selection-end-line="695" selection-end-column="34" />
             </state>
           </provider>
@@ -93,9 +84,9 @@
       <find>NGX_HAVE_DEFERRED_ACCEPT</find>
       <find>ngx_epoll_module_ctx.actions</find>
       <find>ngx_event_process_init</find>
-      <find>ngx_epoll_init</find>
-      <find>ngx_epoll_process_events</find>
       <find>ngx_event_accept</find>
+      <find>ngx_epoll_process_events</find>
+      <find>ngx_epoll_init</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -121,10 +112,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="115" />
-    <option name="y" value="215" />
-    <option name="width" value="1300" />
-    <option name="height" value="700" />
+    <option name="x" value="480" />
+    <option name="y" value="125" />
+    <option name="width" value="1297" />
+    <option name="height" value="697" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -168,6 +159,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="Z:/deploy" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
@@ -195,12 +187,12 @@
       <option name="presentableId" value="Default" />
       <updated>1580904389852</updated>
       <workItem from="1580904391134" duration="9129000" />
-      <workItem from="1580973503324" duration="10702000" />
+      <workItem from="1580973503324" duration="14862000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19831000" />
+    <option name="totallyTimeSpent" value="23991000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -269,31 +261,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/event/ngx_event_acceptex.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3437">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/event/ngx_event.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
+        <state relative-caret-position="1580">
           <caret line="695" column="34" selection-start-line="695" selection-start-column="20" selection-end-line="695" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/event/modules/ngx_epoll_module.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="786" column="6" lean-forward="true" selection-start-line="786" selection-start-column="6" selection-end-line="786" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/event/ngx_event_acceptex.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2645">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="-2380">
+          <caret line="324" column="3" selection-start-line="324" selection-start-column="3" selection-end-line="324" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/event/ngx_event_accept.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="315" column="86" selection-start-line="315" selection-start-column="86" selection-end-line="315" selection-end-column="86" />
+        <state relative-caret-position="401">
+          <caret line="316" column="29" lean-forward="true" selection-start-line="316" selection-start-column="29" selection-end-line="316" selection-end-column="29" />
         </state>
       </provider>
     </entry>

@@ -318,7 +318,11 @@ failed:
 
 #endif
 
-// 在ngx_event_process_init函数中调用
+/*
+ * 初始化事件模块，如给 ngx_event_actions 赋值对应事件模块的 actions.init，这里
+ * 调用 epoll_create 初始化 epoll 事件
+ * 该函数在ngx_event_process_init函数中调用
+ */
 static ngx_int_t
 ngx_epoll_init(ngx_cycle_t *cycle, ngx_msec_t timer)
 {
@@ -926,7 +930,7 @@ ngx_epoll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags)
                 ngx_post_event(rev, queue);
 
             } else {
-                //立即调用回调函数
+                //立即调用回调函数，即ngx_event_accept()
                 rev->handler(rev);
             }
         }
@@ -958,7 +962,7 @@ ngx_epoll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags)
                 ngx_post_event(wev, &ngx_posted_events);
 
             } else {
-                //立即调用回调函数
+                //立即调用回调函数，即ngx_event_accept()
                 wev->handler(wev);
             }
         }
