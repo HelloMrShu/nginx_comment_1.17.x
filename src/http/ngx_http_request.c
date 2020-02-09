@@ -382,9 +382,9 @@ ngx_http_init_connection(ngx_connection_t *c)
 }
 
 /*
- * 客户端建立连接后，只有第一次读取客户端数据时，执行的handler指向该函数
- * 如果在超时范围内又收到客户端请求，则不会再走该函数，而是执行ngx_http_process_request_line，
- * 因为该函数把handler指向ngx_http_process_request_line
+ * 客户端建立连接后，可读事件处理方法
+ * 如果在超时范围内又收到客户端请求，则会执行ngx_http_process_request_line
+ * 因为handler指向ngx_http_process_request_line
  */
 static void
 ngx_http_wait_request_handler(ngx_event_t *rev)
@@ -1057,7 +1057,7 @@ failed:
 #endif
 
 /*
- * 接收http请求行信息
+ * 处理http请求行
  */
 static void
 ngx_http_process_request_line(ngx_event_t *rev)
@@ -1074,7 +1074,7 @@ ngx_http_process_request_line(ngx_event_t *rev)
     ngx_log_debug0(NGX_LOG_DEBUG_HTTP, rev->log, 0,
                    "http process request line");
 
-    // 判断请求是否超时
+    //如果超时，则退出
     if (rev->timedout) {
         ngx_log_error(NGX_LOG_INFO, c->log, NGX_ETIMEDOUT, "client timed out");
         c->timedout = 1;
@@ -1087,7 +1087,7 @@ ngx_http_process_request_line(ngx_event_t *rev)
     for ( ;; ) {
 
         if (rc == NGX_AGAIN) {
-            // 读取请求头信息
+            // 读取请求头，数据存储在 header_in 中，n表示执行结果是否正确
             n = ngx_http_read_request_header(r);
 
             if (n == NGX_AGAIN || n == NGX_ERROR) {
@@ -1095,13 +1095,13 @@ ngx_http_process_request_line(ngx_event_t *rev)
             }
         }
 
-        // 解析请求头
+        // 解析请求行，如host，url，method，schema，port等
         rc = ngx_http_parse_request_line(r, r->header_in);
 
         // 请求行解析成功
         if (rc == NGX_OK) {
 
-            /* the request line has been parsed successfully，请求行解析成功 */
+            /* the request line has been parsed successfully */
             r->request_line.len = r->request_end - r->request_start;
             r->request_line.data = r->request_start;
             r->request_length = r->header_in->pos - r->request_start;
@@ -1348,7 +1348,11 @@ ngx_http_process_request_uri(ngx_http_request_t *r)
     return NGX_OK;
 }
 
-
+/*
+ * 处理HTTP请求头
+ * param r: 待处理的HTTP请求
+ * return :
+ */
 static void
 ngx_http_process_request_headers(ngx_event_t *rev)
 {
@@ -1369,6 +1373,7 @@ ngx_http_process_request_headers(ngx_event_t *rev)
     ngx_log_debug0(NGX_LOG_DEBUG_HTTP, rev->log, 0,
                    "http process request header line");
 
+    //超时则退出
     if (rev->timedout) {
         ngx_log_error(NGX_LOG_INFO, c->log, NGX_ETIMEDOUT, "client timed out");
         c->timedout = 1;
@@ -1376,6 +1381,7 @@ ngx_http_process_request_headers(ngx_event_t *rev)
         return;
     }
 
+    //获取http级别配置
     cmcf = ngx_http_get_module_main_conf(r, ngx_http_core_module);
 
     rc = NGX_AGAIN;
@@ -1422,6 +1428,7 @@ ngx_http_process_request_headers(ngx_event_t *rev)
                 }
             }
 
+            //读取header信息到 header_in 结构
             n = ngx_http_read_request_header(r);
 
             if (n == NGX_AGAIN || n == NGX_ERROR) {
@@ -1430,6 +1437,7 @@ ngx_http_process_request_headers(ngx_event_t *rev)
         }
 
         /* the host header could change the server configuration context */
+        //读取server级别配置
         cscf = ngx_http_get_module_srv_conf(r, ngx_http_core_module);
 
         rc = ngx_http_parse_header_line(r, r->header_in,
@@ -1512,6 +1520,7 @@ ngx_http_process_request_headers(ngx_event_t *rev)
                 break;
             }
 
+            //开始处理请求
             ngx_http_process_request(r);
 
             break;
@@ -1536,7 +1545,9 @@ ngx_http_process_request_headers(ngx_event_t *rev)
     ngx_http_run_posted_requests(c);
 }
 
-
+/*
+ * 读取请求头，存储在header_in结构中
+ */
 static ssize_t
 ngx_http_read_request_header(ngx_http_request_t *r)
 {
@@ -2010,7 +2021,9 @@ ngx_http_process_request_header(ngx_http_request_t *r)
     return NGX_OK;
 }
 
-
+/*
+ *  处理http请求
+ */
 void
 ngx_http_process_request(ngx_http_request_t *r)
 {

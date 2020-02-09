@@ -798,7 +798,10 @@ ngx_module_t  ngx_http_core_module = {
 
 ngx_str_t  ngx_http_core_get_method = { 3, (u_char *) "GET" };
 
-
+/*
+ * 请求处理handler
+ * param r: 待处理的HTTP请求
+ */
 void
 ngx_http_handler(ngx_http_request_t *r)
 {
@@ -807,16 +810,20 @@ ngx_http_handler(ngx_http_request_t *r)
     r->connection->log->action = NULL;
 
     if (!r->internal) {
+        //对请求头中的连接类型进行判断
         switch (r->headers_in.connection_type) {
         case 0:
+            //置r->keepalive为1, 可见在HTTP 1.1中长连接是默认开启的
             r->keepalive = (r->http_version > NGX_HTTP_VERSION_10);
             break;
 
         case NGX_HTTP_CONNECTION_CLOSE:
+            //不开启长连接
             r->keepalive = 0;
             break;
 
         case NGX_HTTP_CONNECTION_KEEP_ALIVE:
+            // 开启长连接
             r->keepalive = 1;
             break;
         }
@@ -837,11 +844,15 @@ ngx_http_handler(ngx_http_request_t *r)
     r->gzip_vary = 0;
 #endif
 
+    //给写事件注册事件处理函数 ngx_http_core_run_phases
     r->write_event_handler = ngx_http_core_run_phases;
+    //调用 ngx_http_core_run_phases 对请求进行处理
     ngx_http_core_run_phases(r);
 }
 
-
+/**
+ * 11个阶段处理HTTP请求
+ */
 void
 ngx_http_core_run_phases(ngx_http_request_t *r)
 {
@@ -853,6 +864,9 @@ ngx_http_core_run_phases(ngx_http_request_t *r)
 
     ph = cmcf->phase_engine.handlers;
 
+    /*
+     * 依次调用，checker控制是否执行，phase_handler表示执行处理函数
+     */
     while (ph[r->phase_handler].checker) {
 
         rc = ph[r->phase_handler].checker(r, &ph[r->phase_handler]);
