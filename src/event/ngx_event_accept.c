@@ -150,6 +150,7 @@ ngx_event_accept(ngx_event_t *ev)
             return;
         }
 
+        //SOCK_STREAM基于TCP，SOCK_DGRAM基于UDP
         c->type = SOCK_STREAM;
 
 #if (NGX_STAT_STUB)

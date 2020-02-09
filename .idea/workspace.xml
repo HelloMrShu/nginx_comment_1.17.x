@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ad8e28f-6550-4dd5-8a6b-fc519dbcbcfe" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/event/modules/ngx_epoll_module.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/modules/ngx_epoll_module.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/event/ngx_event_accept.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/ngx_event_accept.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/http/ngx_http_request.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/http/ngx_http_request.c" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,44 +17,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/event/modules/ngx_epoll_module.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2380">
+            <state relative-caret-position="7128">
               <caret line="324" column="3" selection-start-line="324" selection-start-column="3" selection-end-line="324" selection-end-column="3" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/event/ngx_event_accept.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="316" column="29" lean-forward="true" selection-start-line="316" selection-start-column="29" selection-end-line="316" selection-end-column="29" />
+            <state relative-caret-position="264">
+              <caret line="315" column="23" lean-forward="true" selection-start-line="315" selection-start-column="23" selection-end-line="315" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/os/unix/ngx_process_cycle.c">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/http/ngx_http_request.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-840">
-              <caret line="1002" column="102" lean-forward="true" selection-start-line="1002" selection-start-column="78" selection-end-line="1002" selection-end-column="102" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/event/ngx_event.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1580">
-              <caret line="695" column="34" selection-start-line="695" selection-start-column="20" selection-end-line="695" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/os/unix/ngx_process.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-10401">
-              <caret line="86" selection-start-line="86" selection-end-line="86" />
+            <state relative-caret-position="18">
+              <caret line="1352" column="32" selection-start-line="1352" selection-end-line="1352" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -87,12 +70,17 @@
       <find>ngx_event_accept</find>
       <find>ngx_epoll_process_events</find>
       <find>ngx_epoll_init</find>
+      <find>ngx_http_init_connection</find>
+      <find>ngx_http_wait_request_handler</find>
+      <find>ngx_http_process_request_line</find>
+      <find>ngx_http_process_request_headers</find>
     </findStrings>
     <replaceStrings>
       <replace />
     </replaceStrings>
     <dirStrings>
       <dir>C:\Users\Administrator\Desktop\nginx_comment_1.17.x\src</dir>
+      <dir>C:\Users\Administrator\Desktop\nginx_comment_1.17.x\src\http</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -108,14 +96,15 @@
         <option value="$PROJECT_DIR$/src/event/ngx_event.c" />
         <option value="$PROJECT_DIR$/src/event/modules/ngx_epoll_module.c" />
         <option value="$PROJECT_DIR$/src/event/ngx_event_accept.c" />
+        <option value="$PROJECT_DIR$/src/http/ngx_http_request.c" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="480" />
     <option name="y" value="125" />
-    <option name="width" value="1297" />
-    <option name="height" value="697" />
+    <option name="width" value="1298" />
+    <option name="height" value="698" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -136,19 +125,6 @@
               <item name="nginx_comment_1.17.x" type="b2602c69:ProjectViewProjectNode" />
               <item name="nginx_comment_1.17.x" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nginx_comment_1.17.x" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nginx_comment_1.17.x" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="event" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nginx_comment_1.17.x" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nginx_comment_1.17.x" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="event" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -187,18 +163,19 @@
       <option name="presentableId" value="Default" />
       <updated>1580904389852</updated>
       <workItem from="1580904391134" duration="9129000" />
-      <workItem from="1580973503324" duration="14862000" />
+      <workItem from="1580973503324" duration="15121000" />
+      <workItem from="1581131256160" duration="3275000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23991000" />
+    <option name="totallyTimeSpent" value="27525000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21313673" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21581769" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -240,27 +217,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/nginx.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2424">
-          <caret line="390" column="26" selection-start-line="390" selection-start-column="26" selection-end-line="390" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/os/unix/ngx_process.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10401">
-          <caret line="86" selection-start-line="86" selection-end-line="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/os/unix/ngx_process_cycle.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-840">
-          <caret line="1002" column="102" lean-forward="true" selection-start-line="1002" selection-start-column="78" selection-end-line="1002" selection-end-column="102" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/event/ngx_event_acceptex.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3437">
@@ -268,24 +224,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/event/ngx_event.c">
+    <entry file="file://$PROJECT_DIR$/src/event/modules/ngx_epoll_module.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1580">
-          <caret line="695" column="34" selection-start-line="695" selection-start-column="20" selection-end-line="695" selection-end-column="34" />
+        <state relative-caret-position="7128">
+          <caret line="324" column="3" selection-start-line="324" selection-start-column="3" selection-end-line="324" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/event/modules/ngx_epoll_module.c">
+    <entry file="file://$PROJECT_DIR$/src/os/unix/ngx_process_cycle.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2380">
-          <caret line="324" column="3" selection-start-line="324" selection-start-column="3" selection-end-line="324" selection-end-column="3" />
+        <state relative-caret-position="22044">
+          <caret line="1002" column="102" selection-start-line="1002" selection-start-column="78" selection-end-line="1002" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/os/unix/ngx_process.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1892">
+          <caret line="86" selection-start-line="86" selection-end-line="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/nginx.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1166">
+          <caret line="390" column="26" selection-start-line="390" selection-start-column="26" selection-end-line="390" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/event/ngx_event.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-27">
+          <caret line="695" column="34" selection-start-line="695" selection-start-column="20" selection-end-line="695" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/event/ngx_event_accept.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="316" column="29" lean-forward="true" selection-start-line="316" selection-start-column="29" selection-end-line="316" selection-end-column="29" />
+        <state relative-caret-position="264">
+          <caret line="315" column="23" lean-forward="true" selection-start-line="315" selection-start-column="23" selection-end-line="315" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/http/ngx_http_request.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1352" column="32" selection-start-line="1352" selection-end-line="1352" selection-end-column="32" />
         </state>
       </provider>
     </entry>

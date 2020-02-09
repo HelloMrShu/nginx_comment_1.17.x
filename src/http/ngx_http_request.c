@@ -367,7 +367,7 @@ ngx_http_init_connection(ngx_connection_t *c)
             return;
         }
         
-        // ngx_http_wait_request_handler
+        // 执行回调 ngx_http_wait_request_handler
         rev->handler(rev);
         return;
     }
@@ -382,9 +382,9 @@ ngx_http_init_connection(ngx_connection_t *c)
 }
 
 /*
- * 客户端建立连接后，只有第一次读取客户端数据到数据的时候，执行的handler指向该函数，因此当客户端连接建立成功后，只有第一次读取
- * 客户端数据才会走该函数，如果在保活期内又收到客户端请求，则不会再走该函数，而是执行ngx_http_process_request_line，因为该函数
- * 把handler指向了ngx_http_process_request_line
+ * 客户端建立连接后，只有第一次读取客户端数据时，执行的handler指向该函数
+ * 如果在超时范围内又收到客户端请求，则不会再走该函数，而是执行ngx_http_process_request_line，
+ * 因为该函数把handler指向ngx_http_process_request_line
  */
 static void
 ngx_http_wait_request_handler(ngx_event_t *rev)
@@ -443,7 +443,7 @@ ngx_http_wait_request_handler(ngx_event_t *rev)
         b->end = b->last + size;
     }
 
-    // 读取客户端来的数据 执行ngx_unix_recv
+    // 读取客户端来的数据，执行ngx_unix_recv
     n = c->recv(c, b->last, size);
 
     if (n == NGX_AGAIN) {
@@ -516,7 +516,7 @@ ngx_http_wait_request_handler(ngx_event_t *rev)
     }
 
     /*
-     * 第一次接收到http请求后，更新接收handler为ngx_http_process_request_line完成后续处理
+     * 第一次接收到http请求后，更新接收handler为ngx_http_process_request_line
      */
     rev->handler = ngx_http_process_request_line;
     ngx_http_process_request_line(rev);
@@ -1101,8 +1101,7 @@ ngx_http_process_request_line(ngx_event_t *rev)
         // 请求行解析成功
         if (rc == NGX_OK) {
 
-            /* the request line has been parsed successfully */
-
+            /* the request line has been parsed successfully，请求行解析成功 */
             r->request_line.len = r->request_end - r->request_start;
             r->request_line.data = r->request_start;
             r->request_length = r->header_in->pos - r->request_start;
