@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4ad8e28f-6550-4dd5-8a6b-fc519dbcbcfe" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/http/ngx_http_core_module.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/http/ngx_http_core_module.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/http/ngx_http_core_module.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/http/ngx_http_core_module.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/http/ngx_http_request.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/http/ngx_http_request.c" afterDir="false" />
-    </list>
+    <list default="true" id="4ad8e28f-6550-4dd5-8a6b-fc519dbcbcfe" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +32,7 @@
         <entry file="file://$PROJECT_DIR$/src/http/ngx_http_request.c">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="216">
-              <caret line="3712" column="20" selection-start-line="3712" selection-start-column="4" selection-end-line="3712" selection-end-column="20" />
+              <caret line="2634" column="42" selection-start-line="2634" selection-start-column="28" selection-end-line="2634" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -44,17 +40,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/http/ngx_http_core_module.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="862" column="40" selection-start-line="862" selection-start-column="11" selection-end-line="862" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/http/ngx_http_core_module.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="109" column="34" lean-forward="true" selection-start-line="109" selection-start-column="34" selection-end-line="109" selection-end-column="34" />
+            <state relative-caret-position="308">
+              <caret line="941" column="1" lean-forward="true" selection-start-line="941" selection-start-column="1" selection-end-line="941" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -63,9 +50,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ngx_get_conf</find>
-      <find>ngx_get_option</find>
-      <find>ngx_signal_value</find>
       <find>ngx_os_signal_process</find>
       <find>ngx_signal_process</find>
       <find>ngx_process_e</find>
@@ -93,13 +77,16 @@
       <find>ngx_http_process_request_headers</find>
       <find>ngx_http_process_request</find>
       <find>ngx_http_handler</find>
+      <find>ngx_http_block</find>
+      <find>ngx_http_core_run_phases</find>
+      <find>ngx_http_block_reading</find>
     </findStrings>
     <replaceStrings>
       <replace />
     </replaceStrings>
     <dirStrings>
-      <dir>C:\Users\Administrator\Desktop\nginx_comment_1.17.x\src</dir>
       <dir>C:\Users\Administrator\Desktop\nginx_comment_1.17.x\src\http</dir>
+      <dir>C:\Users\Administrator\Desktop\nginx_comment_1.17.x\src</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -121,7 +108,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="480" />
     <option name="y" value="125" />
     <option name="width" value="1298" />
@@ -151,7 +138,7 @@
               <item name="nginx_comment_1.17.x" type="b2602c69:ProjectViewProjectNode" />
               <item name="nginx_comment_1.17.x" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="http" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -191,18 +178,17 @@
       <updated>1580904389852</updated>
       <workItem from="1580904391134" duration="9129000" />
       <workItem from="1580973503324" duration="15121000" />
-      <workItem from="1581131256160" duration="9175000" />
+      <workItem from="1581131256160" duration="13057000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33425000" />
+    <option name="totallyTimeSpent" value="37307000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2600536" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1575067" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -303,21 +289,21 @@
     <entry file="file://$PROJECT_DIR$/src/http/ngx_http_request.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
-          <caret line="3712" column="20" selection-start-line="3712" selection-start-column="4" selection-end-line="3712" selection-end-column="20" />
+          <caret line="2634" column="42" selection-start-line="2634" selection-start-column="28" selection-end-line="2634" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/http/ngx_http_core_module.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
+        <state relative-caret-position="-555">
           <caret line="109" column="34" lean-forward="true" selection-start-line="109" selection-start-column="34" selection-end-line="109" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/http/ngx_http_core_module.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="862" column="40" selection-start-line="862" selection-start-column="11" selection-end-line="862" selection-end-column="40" />
+        <state relative-caret-position="308">
+          <caret line="941" column="1" lean-forward="true" selection-start-line="941" selection-start-column="1" selection-end-line="941" selection-end-column="1" />
         </state>
       </provider>
     </entry>
