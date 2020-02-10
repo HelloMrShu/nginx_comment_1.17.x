@@ -7,10 +7,11 @@
 本项目是个人在需要理解epoll事件模型的前提下进行的，是个人理解的一个备注，希望感兴趣的同学一起学习，如有错误之处，烦请提pr帮助改正。
 
 # 目前注释的主要内容
-1. nginx启动过程
+
+1 nginx启动过程
 主要是main函数，路径/src/core/nginx.c
 
-2. 两种工作模式
+2 两种工作模式
 ngx_single_process_cycle 和 ngx_master_process_cycle
 
 3 子进程工作流程
