@@ -28,6 +28,6 @@ ngx_process_events 和 ngx_epoll_process_events，以及ngx_event_accept
 
 # 流程图
 
-
+![nginx启动流程图](https://github.com/HelloMrShu/nginx_comment_1.17.x/blob/master/images/nginx%2B%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B.png)
 
 
